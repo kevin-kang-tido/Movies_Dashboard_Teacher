@@ -29,6 +29,10 @@ import Table from "examples/Tables/Table";
 // Data
 import authorsTableData from "layouts/tables/data/authorsTableData";
 import projectsTableData from "layouts/tables/data/projectsTableData";
+import Popular from "./dataTableform/Popular";
+import Upcomingtable from "./dataTableform/Upcomingtable";
+import Nowplayingtable from "./dataTableform/Nowplayingtable";
+import Topratetable from "./dataTableform/Topratetable";
 
 function Tables() {
   const { columns, rows } = authorsTableData;
@@ -38,28 +42,42 @@ function Tables() {
     <DashboardLayout>
       <DashboardNavbar />
       <SoftBox py={3}>
-        <SoftBox mb={3}>
-          <Card>
+         {/* data table part popular start */}
+         <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+            <SoftTypography variant="h6" className="text-danger font-weight-bold display-3">Table Popular Movies</SoftTypography>
+          </SoftBox>
+          <SoftBox>
+            <Popular/>
+            {/* <Table columns={prCols} rows={prRows} /> */}
+          </SoftBox>
+         {/* data table part popular end */}
+         {/* data table part Upcoming end */}
+         <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+            <SoftTypography variant="h6" className="text-danger font-weight-bold display-3">Table Movies Upcoming</SoftTypography>
+          </SoftBox>
+          <SoftBox>
+            <Upcomingtable/>
+          </SoftBox>
+         {/* data table part popular end */}
+          {/* data table part nowplaying */}
             <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-              <SoftTypography variant="h6">Authors table</SoftTypography>
-            </SoftBox>
-            <SoftBox
-              sx={{
-                "& .MuiTableRow-root:not(:last-child)": {
-                  "& td": {
-                    borderBottom: ({ borders: { borderWidth, borderColor } }) =>
-                      `${borderWidth[1]} solid ${borderColor}`,
-                  },
-                },
-              }}
-            >
-              <Table columns={columns} rows={rows} />
-            </SoftBox>
-          </Card>
-        </SoftBox>
-        <Card>
+            <SoftTypography variant="h6"className="text-danger font-weight-bold display-3">Table Movies Now Playing </SoftTypography>
+          </SoftBox>
+          <SoftBox>
+            <Nowplayingtable/>
+          </SoftBox>
+         {/* data table part nowplaying end */}
+         {/* data table part actor */}
+         <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+            <SoftTypography variant="h6"className="text-danger font-weight-bold display-3">Table Movies Top Rated </SoftTypography>
+          </SoftBox>
+          <SoftBox>
+            <Topratetable/>
+          </SoftBox>
+         {/* data table part actor end */}
+          {/* test dashboard start */}
           <SoftBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
-            <SoftTypography variant="h6">Projects table</SoftTypography>
+            <SoftTypography variant="h6" className="text-danger font-weight-bold display-3">Table Application</SoftTypography>
           </SoftBox>
           <SoftBox
             sx={{
@@ -73,7 +91,8 @@ function Tables() {
           >
             <Table columns={prCols} rows={prRows} />
           </SoftBox>
-        </Card>
+         {/* test dashboard end */}
+
       </SoftBox>
       <Footer />
     </DashboardLayout>
